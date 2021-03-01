@@ -1,0 +1,12 @@
+[Unit]
+Description=greenplum exporter
+After=network.target
+[Service]
+Type=simple
+User=prometheus
+WorkingDirectory=/usr/local/greenplum_exporter/
+EnvironmentFile=/usr/local/greenplum_exporter/etc/greenplum.conf
+ExecStart=/usr/local/greenplum_exporter/bin/greenplum_exporter --log.level=error
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
